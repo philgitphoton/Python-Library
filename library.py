@@ -2,7 +2,6 @@ class Library:
 
     def __init__(self):
         self.books = []
-        
 
     def add_book(self, title, author, price, publishDate, onLoan):
         self.books.append([title, author, price, publishDate, onLoan])

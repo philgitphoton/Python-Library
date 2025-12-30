@@ -9,6 +9,16 @@ def load_books():
     library.add_book("The Hobbit", "J.R.R. Tolkien", 12.50, "1937-09-21", True)
     library.add_book("Dune", "Frank Herbert", 15.00, "1965-08-01", False)
 
+def add_book():
+    print("\n" + "Adding Book")
+    print("---------------------------")
+    title = input("Enter Title: ")
+    author = input("Enter Author: ")
+    price = input("Enter price: ")
+    publishDate = input("Date Published: (yyyy-mm-dd)")
+    onLoan = False
+    library.add_book(title, author, price, publishDate, onLoan)
+    
 def list_books():    
     all_books = library.get_all_books()
     for index, book in enumerate(all_books):
@@ -29,16 +39,19 @@ def borrow_book():
         print("\n" + "That book is already on loan")
 
 def return_book():
+    success = False
     all_books = library.get_all_books()
     title = input ("\n" + "Enter the title of the book you would like to return: ")
     for index, book in enumerate(all_books):
         if title == book[0]:
             if book[4] == True:
                 print("Return accepted")
+                book[4] = False
+                success = True
                 break
             else:
                 print("\n" + "That book is not currently on loan")
+                success = True
                 break
-        if not title == book[0]:
-            print("\n" + "We don't have that book, or you have mistyped the title")
-            return
+    if success == False:
+        print("\n" + "We don't have that book, or you have mistyped the title")

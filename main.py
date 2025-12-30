@@ -8,6 +8,7 @@ while True:
     print("Welcome to the Library")
     print("---------------------------")
     print("What would you like to do")
+    print("0. Add a book to the library")
     print("1. See all books in the library")
     print("2. Borrow a book")
     print("3. Return a book")
@@ -18,6 +19,8 @@ while True:
     choice = input()
     print("\n")
 
+    if choice == "0":
+        books.add_book()
     if choice == "1":    
         books.list_books()
     if choice == "2":
