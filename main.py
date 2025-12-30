@@ -1,7 +1,12 @@
+from library import Library
 import books
+import jsonReader
 
-books.load_books()
-3
+
+library = Library()
+# books.load_books(library)
+jsonReader.load_books(library)
+
 while True:
     print("\n")
     print("---------------------------")
@@ -20,10 +25,13 @@ while True:
     print("\n")
 
     if choice == "0":
-        books.add_book()
+        books.add_book(library)
     if choice == "1":    
-        books.list_books()
+        books.list_books(library)
     if choice == "2":
-        books.borrow_book()
+        books.borrow_book(library)
     if choice == "3":
-        books.return_book()
+        books.return_book(library)
+    if choice == "4":
+        books.commit(library)
+        break
